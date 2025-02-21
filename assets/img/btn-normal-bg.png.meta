@@ -2,7 +2,7 @@
   "ver": "1.0.25",
   "importer": "image",
   "imported": true,
-  "uuid": "b7532b52-e950-4744-a54c-1b9219b3aadf",
+  "uuid": "45590b24-1ae0-4f5b-968a-42a45f8c0bf7",
   "files": [
     ".json",
     ".png"
@@ -10,20 +10,20 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "b7532b52-e950-4744-a54c-1b9219b3aadf@6c48a",
-      "displayName": "pai_01_03_yy",
+      "uuid": "45590b24-1ae0-4f5b-968a-42a45f8c0bf7@6c48a",
+      "displayName": "btn-normal-bg",
       "id": "6c48a",
       "name": "texture",
       "userData": {
-        "wrapModeS": "clamp-to-edge",
-        "wrapModeT": "clamp-to-edge",
-        "imageUuidOrDatabaseUri": "b7532b52-e950-4744-a54c-1b9219b3aadf",
-        "isUuid": true,
-        "visible": false,
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
         "minfilter": "linear",
         "magfilter": "linear",
         "mipfilter": "none",
-        "anisotropy": 0
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "45590b24-1ae0-4f5b-968a-42a45f8c0bf7",
+        "visible": false
       },
       "ver": "1.0.22",
       "imported": true,
@@ -34,8 +34,8 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "b7532b52-e950-4744-a54c-1b9219b3aadf@f9941",
-      "displayName": "pai_01_03_yy",
+      "uuid": "45590b24-1ae0-4f5b-968a-42a45f8c0bf7@f9941",
+      "displayName": "btn-normal-bg",
       "id": "f9941",
       "name": "spriteFrame",
       "userData": {
@@ -114,7 +114,7 @@
           ]
         },
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "b7532b52-e950-4744-a54c-1b9219b3aadf@6c48a",
+        "imageUuidOrDatabaseUri": "45590b24-1ae0-4f5b-968a-42a45f8c0bf7@6c48a",
         "atlasUuid": ""
       },
       "ver": "1.0.11",
@@ -129,6 +129,6 @@
     "type": "sprite-frame",
     "fixAlphaTransparencyArtifacts": true,
     "hasAlpha": true,
-    "redirect": "b7532b52-e950-4744-a54c-1b9219b3aadf@f9941"
+    "redirect": "45590b24-1ae0-4f5b-968a-42a45f8c0bf7@f9941"
   }
 }

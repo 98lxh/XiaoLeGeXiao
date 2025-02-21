@@ -2,7 +2,7 @@
   "ver": "1.0.25",
   "importer": "image",
   "imported": true,
-  "uuid": "45b340e6-8f68-4244-865c-09c429d40f45",
+  "uuid": "35a83f38-3d8f-479a-b8bc-3d5fb8a963c6",
   "files": [
     ".json",
     ".png"
@@ -10,20 +10,20 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "45b340e6-8f68-4244-865c-09c429d40f45@6c48a",
-      "displayName": "wz_1_07_1",
+      "uuid": "35a83f38-3d8f-479a-b8bc-3d5fb8a963c6@6c48a",
+      "displayName": "frame_3",
       "id": "6c48a",
       "name": "texture",
       "userData": {
-        "wrapModeS": "clamp-to-edge",
-        "wrapModeT": "clamp-to-edge",
-        "imageUuidOrDatabaseUri": "45b340e6-8f68-4244-865c-09c429d40f45",
-        "isUuid": true,
-        "visible": false,
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
         "minfilter": "linear",
         "magfilter": "linear",
         "mipfilter": "none",
-        "anisotropy": 0
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "35a83f38-3d8f-479a-b8bc-3d5fb8a963c6",
+        "visible": false
       },
       "ver": "1.0.22",
       "imported": true,
@@ -34,22 +34,22 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "45b340e6-8f68-4244-865c-09c429d40f45@f9941",
-      "displayName": "wz_1_07_1",
+      "uuid": "35a83f38-3d8f-479a-b8bc-3d5fb8a963c6@f9941",
+      "displayName": "frame_3",
       "id": "f9941",
       "name": "spriteFrame",
       "userData": {
         "trimType": "auto",
         "trimThreshold": 1,
         "rotated": false,
-        "offsetX": 0,
-        "offsetY": 0,
-        "trimX": 0,
-        "trimY": 0,
-        "width": 1023,
-        "height": 199,
-        "rawWidth": 1023,
-        "rawHeight": 199,
+        "offsetX": 0.5,
+        "offsetY": 0.5,
+        "trimX": 2,
+        "trimY": 1,
+        "width": 167,
+        "height": 167,
+        "rawWidth": 170,
+        "rawHeight": 170,
         "borderTop": 0,
         "borderBottom": 0,
         "borderLeft": 0,
@@ -61,17 +61,17 @@
         "meshType": 0,
         "vertices": {
           "rawPosition": [
-            -511.5,
-            -99.5,
+            -83.5,
+            -83.5,
             0,
-            511.5,
-            -99.5,
+            83.5,
+            -83.5,
             0,
-            -511.5,
-            99.5,
+            -83.5,
+            83.5,
             0,
-            511.5,
-            99.5,
+            83.5,
+            83.5,
             0
           ],
           "indexes": [
@@ -83,38 +83,38 @@
             3
           ],
           "uv": [
-            0,
-            199,
-            1023,
-            199,
-            0,
-            0,
-            1023,
-            0
+            2,
+            169,
+            169,
+            169,
+            2,
+            2,
+            169,
+            2
           ],
           "nuv": [
-            0,
-            0,
-            1,
-            0,
-            0,
-            1,
-            1,
-            1
+            0.011764705882352941,
+            0.011764705882352941,
+            0.9941176470588236,
+            0.011764705882352941,
+            0.011764705882352941,
+            0.9941176470588236,
+            0.9941176470588236,
+            0.9941176470588236
           ],
           "minPos": [
-            -511.5,
-            -99.5,
+            -83.5,
+            -83.5,
             0
           ],
           "maxPos": [
-            511.5,
-            99.5,
+            83.5,
+            83.5,
             0
           ]
         },
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "45b340e6-8f68-4244-865c-09c429d40f45@6c48a",
+        "imageUuidOrDatabaseUri": "35a83f38-3d8f-479a-b8bc-3d5fb8a963c6@6c48a",
         "atlasUuid": ""
       },
       "ver": "1.0.11",
@@ -129,6 +129,6 @@
     "type": "sprite-frame",
     "fixAlphaTransparencyArtifacts": true,
     "hasAlpha": true,
-    "redirect": "45b340e6-8f68-4244-865c-09c429d40f45@f9941"
+    "redirect": "35a83f38-3d8f-479a-b8bc-3d5fb8a963c6@f9941"
   }
 }

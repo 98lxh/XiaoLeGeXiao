@@ -24,8 +24,20 @@ export class game extends Component {
     @_decorator.property({type: Node})
     layerOver = null
 
+    @_decorator.property({ type: Node })
+    startLayer = null
+
     @_decorator.property({type: Node})
     parentEdit = null
+
+    @_decorator.property({ type: Node })
+    startButton = null
+
+    @_decorator.property({ type: Node })
+    alertLayer = null
+
+    @_decorator.property({ type: Node })
+    alertContent = null
 
     @_decorator.property({type: Label})
     labelBlocksInfo = null
@@ -70,6 +82,9 @@ export class game extends Component {
     blockPool: NodePool;
 
     start() {
+        this.startLayer.active = true;
+        this.gameType = -1
+
         this.isWX = WECHAT
         this.wx = window['wx']
         this.idBannerAD = 'xxxx'//banner广告位id
@@ -82,7 +97,7 @@ export class game extends Component {
         this.numBlockType = 2 //随机关卡，下一关比该关卡多几个种类
         this.numBlocksKuaiGeShu = 99 //随机关卡，最少个块数 必须是3的倍数
         this.numBlocksKuai = 6 //随机关卡，下一关比该关卡多几个块 必须是3的倍数
-        this.arrNumDJ = [3,3,3,3]//每个道具的个数
+        this.arrNumDJ = [3,3,999,999]//每个道具的个数
         this.isEditing = this.parentEdit.active //是否是编辑模式
         this.numTypeEdit = 1//(0:减，1：加)
         this.numTypeSuiJi = 2 //随机模式下，用那种类型的坐标（0：随机的 1：规范的 2：有随机也有规范）
@@ -124,7 +139,15 @@ export class game extends Component {
         input.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
         input.on(Input.EventType.TOUCH_MOVE, this.onTouchMove, this);
         input.on(Input.EventType.TOUCH_END, this.onTouchEnd, this);
+
         
+        this.startButton.on(Node.EventType.TOUCH_END, this.startGame, this)
+    }
+
+
+    startGame(){
+        this.startLayer.active = false;
+        this.gameType = 0;
     }
 
     //分享给好友
@@ -228,16 +251,12 @@ export class game extends Component {
         })
 
         this.bannerAd.onResize(res => {
-            // console.log(res.width, res.height)
-            // console.log(this.bannerAd.style.realWidth, this.bannerAd.style.realHeight)
             this.bannerAd.style.left = (screenWidth - this.bannerAd.style.realWidth) / 2
             this.bannerAd.style.top = screenHeight - this.bannerAd.style.realHeight
           })
     }
 
-    init(){
-        //console.log('poolSize:'+this.blockPool.size());
-        
+    init(){        
         this.gameType = 0 //（-1：游戏失败，0：正常游戏，1：游戏通关）
         this.numTouchStart = -1
         this.numTouchEnd = -1
@@ -448,7 +467,7 @@ export class game extends Component {
         ts_block.v3BlockOld = v3_node_di
 
         tween(nodeBlock)
-          .to(0.1,{position:new Vec3(xx,0,0)})
+          .to(0.1,{position:new Vec3(xx,15,0)})
           .call(()=>{ this.pdXiaoChu(nodeBlock) })
           .start()
     }
@@ -476,7 +495,6 @@ export class game extends Component {
                     .to(0.08,{scale:new Vec3(0,0,0)})
                     .removeSelf()
                     .start()
-                //arr_blockType[i].removeFromParent()
                 is_xiaoChu = true
             }
         }
@@ -492,7 +510,7 @@ export class game extends Component {
                     //children_2[i].setPosition(xx,0,0)
                     tween(children_2[i])
                         .delay(0.05)
-                        .to(0.08,{position:new Vec3(xx,0,0)})
+                        .to(0.08,{position:new Vec3(xx,15,0)})
                         .start()
                 }
             }
@@ -569,7 +587,7 @@ export class game extends Component {
                 ts_block.numDi++
                 let xx = this.xxStartDi + 80 * ts_block.numDi
                 tween(children[i])
-                    .to(0.09,{ position: new Vec3(xx) })
+                    .to(0.09,{ position: new Vec3(xx, 15) })
                     .start()
             }
         }
@@ -666,7 +684,7 @@ export class game extends Component {
             if (node_UITransform.getBoundingBox().contains(new Vec2(v3_touchStart.x,v3_touchStart.y))) {
                 this.audioSource.playOneShot(this.arrAudio[0],1)
                 this.numTouchStart = i
-                //console.log('点中了：'+i);
+
                 tween(children[i])
                     .to(0.1,{scale:new Vec3(1.2,1.2,1.2)})
                     .start()
@@ -712,10 +730,6 @@ export class game extends Component {
                 let children = this.parentBlocks.chidlren
                 for (let i = children.length-1; i >= 0; i--) {
                     let ts_block = children[i].getComponent(block)
-                    // if (ts_block.canTouch == false) {
-                    //     continue
-                    // }
-
                     let node_UITransform = children[i].getComponent(UITransform)
                     if (node_UITransform.getBoundingBox().contains(new Vec2(v3_touchStart.x,v3_touchStart.y))) {
                         //console.log('点中了：'+i);
@@ -778,7 +792,7 @@ export class game extends Component {
 
         if (this.numTouchStart != -1) {
             tween(children[this.numTouchStart])
-                .to(0.1,{scale:new Vec3(1.,1,1)})
+                .to(0.1,{scale:new Vec3(1,1,1)})
                 .start()
         }
 
