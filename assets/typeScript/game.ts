@@ -5,6 +5,17 @@ import { WECHAT } from 'cc/env';
 
 @_decorator.ccclass('game')
 export class game extends Component {
+    @_decorator.property({ type: Node })
+    transiton = null
+
+    @_decorator.property({ type: Node })
+    alertButton = null
+
+    @_decorator.property({ type: Node })
+    alertLayer = null
+
+    @_decorator.property({ type: Node })
+    alertContent = null
 
     @_decorator.property({type: Prefab})
     preBlock = null
@@ -32,12 +43,6 @@ export class game extends Component {
 
     @_decorator.property({ type: Node })
     startButton = null
-
-    @_decorator.property({ type: Node })
-    alertLayer = null
-
-    @_decorator.property({ type: Node })
-    alertContent = null
 
     @_decorator.property({type: Label})
     labelBlocksInfo = null
@@ -82,6 +87,7 @@ export class game extends Component {
     blockPool: NodePool;
 
     start() {
+        // this.openAlert()
         this.startLayer.active = true;
         this.gameType = -1
 
@@ -97,7 +103,7 @@ export class game extends Component {
         this.numBlockType = 2 //随机关卡，下一关比该关卡多几个种类
         this.numBlocksKuaiGeShu = 99 //随机关卡，最少个块数 必须是3的倍数
         this.numBlocksKuai = 6 //随机关卡，下一关比该关卡多几个块 必须是3的倍数
-        this.arrNumDJ = [3,3,999,999]//每个道具的个数
+        this.arrNumDJ = [3,3,99,3]//每个道具的个数
         this.isEditing = this.parentEdit.active //是否是编辑模式
         this.numTypeEdit = 1//(0:减，1：加)
         this.numTypeSuiJi = 2 //随机模式下，用那种类型的坐标（0：随机的 1：规范的 2：有随机也有规范）
@@ -111,7 +117,6 @@ export class game extends Component {
         this.gameData = this.node.getComponent(gameData)
 
         this.createBlocksEdit()
-
         this.init()
 
         if(this.isWX){
@@ -142,12 +147,14 @@ export class game extends Component {
 
         
         this.startButton.on(Node.EventType.TOUCH_END, this.startGame, this)
+        this.alertButton.on(Node.EventType.TOUCH_END, this.closeAlert, this)
     }
 
 
     startGame(){
         this.startLayer.active = false;
         this.gameType = 0;
+        this.refreshLevelInfo(true)
     }
 
     //分享给好友
@@ -257,6 +264,7 @@ export class game extends Component {
     }
 
     init(){        
+
         this.gameType = 0 //（-1：游戏失败，0：正常游戏，1：游戏通关）
         this.numTouchStart = -1
         this.numTouchEnd = -1
@@ -264,7 +272,6 @@ export class game extends Component {
         this.layerOver.active = false
         this.nodeTip.scale = new Vec3(0,0,0)
 
-        this.refreshLevelInfo()
         this.shuaXinDJ()
 
         if (this.isEditing) {
@@ -275,6 +282,16 @@ export class game extends Component {
                 ts_block.init(num_type_random)
             }
         }else{
+            if(this.numLevel === 2){
+                this.gameType = -1
+                this.openAlert()
+                return
+            }
+
+            this.refreshLevelInfo()
+
+
+
             let children = this.parentBlocks.children
             for (let i = children.length-1; i >= 0; i--) {
                 this.onBlockKilled(children[i])
@@ -313,6 +330,28 @@ export class game extends Component {
         }
     }
 
+    openAlert() {
+        this.alertLayer.active = true
+        tween(this.alertContent)
+            .to(0.1, { scale: new Vec3(1, 1, 1) })
+            .start()
+    }
+
+
+    closeAlert(){
+        tween(this.alertContent)
+            .to(0.1, { scale: new Vec3(0, 0, 0) })
+            .call(() => {
+                this.alertLayer.active = false
+                this.start()
+                // this.startLayer.active = true
+                // this.numLevel = 0
+            })
+            .start()
+    }
+
+
+
     visibleTooltip(str){
         this.nodeTip.getChildByName('Label').getComponent(Label).string = str
         tween(this.nodeTip)
@@ -328,9 +367,17 @@ export class game extends Component {
         }
     }
 
-    refreshLevelInfo(){
+    refreshLevelInfo(isStart = false){
         let num_level = this.numLevel + 1
-        this.labelLevel.string = '第'+num_level+'关'
+        this.labelLevel.string = '第'+ num_level+ '关'
+
+        if(this.numLevel !== 0 || isStart){
+            tween(this.transiton)
+                .to(1.5, { position: new Vec3(-1000, 0, 0) })
+                .call(() => { this.transiton.position = new Vec3(1000, 0, 0) })
+                .start()
+        }
+        
 
         if (this.isEditing) {
             if (this.numTypeEdit == 1) {
@@ -351,6 +398,7 @@ export class game extends Component {
             }
             
         }
+
 
 
     }

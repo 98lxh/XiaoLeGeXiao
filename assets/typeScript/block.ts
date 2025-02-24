@@ -70,7 +70,14 @@ export class block extends Component {
         let num_pz = 5
         let node_UITransform_1 = this.node.getComponent(UITransform)
         let rect_1 = node_UITransform_1.getBoundingBox()
-        let rect_3 = new Rect(rect_1.x + num_pz,rect_1.y + num_pz,rect_1.width-num_pz*2,rect_1.height-num_pz*2)
+        
+        let rect_3 = new Rect(
+            rect_1.x + num_pz,
+            rect_1.y + num_pz,
+            rect_1.width - num_pz * 2,
+            rect_1.height - num_pz * 2
+        )
+        
         return rect_3
     }
 
