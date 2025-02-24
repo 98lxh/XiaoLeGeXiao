@@ -1,9 +1,9 @@
 {
   "splash-setting": {
-    "url": "project://assets/img/block/drawable_s2.png",
+    "url": "project://assets/img/加载背景@2x.png",
     "displayWatermark": true,
     "totalTime": 1000,
-    "displayRatio": -3,
+    "displayRatio": 1,
     "clearColor": {
       "x": 0.8784313725490196,
       "y": 0.8784313725490196,
