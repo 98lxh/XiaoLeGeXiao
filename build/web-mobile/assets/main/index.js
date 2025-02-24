@@ -26,3 +26,4 @@ System.register("chunks:///_virtual/main",["./block.ts","./game.ts","./gameData.
     };
     });
 });
+//# sourceMappingURL=index.js.map

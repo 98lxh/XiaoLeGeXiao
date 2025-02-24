@@ -1,6 +1,14 @@
 {
   "splash-setting": {
-    "url": "project://assets/img/block/drawable_s1.png",
-    "displayWatermark": false
+    "url": "project://assets/img/block/drawable_s2.png",
+    "displayWatermark": true,
+    "totalTime": 1000,
+    "displayRatio": -3,
+    "clearColor": {
+      "x": 0.8784313725490196,
+      "y": 0.8784313725490196,
+      "z": 0.8784313725490196,
+      "w": 1
+    }
   }
 }
