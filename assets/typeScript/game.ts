@@ -103,7 +103,7 @@ export class game extends Component {
         this.numBlockType = 2 //随机关卡，下一关比该关卡多几个种类
         this.numBlocksKuaiGeShu = 99 //随机关卡，最少个块数 必须是3的倍数
         this.numBlocksKuai = 6 //随机关卡，下一关比该关卡多几个块 必须是3的倍数
-        this.arrNumDJ = [3,3,99,3]//每个道具的个数
+        this.arrNumDJ = [3,3,3,3]//每个道具的个数
         this.isEditing = this.parentEdit.active //是否是编辑模式
         this.numTypeEdit = 1//(0:减，1：加)
         this.numTypeSuiJi = 2 //随机模式下，用那种类型的坐标（0：随机的 1：规范的 2：有随机也有规范）

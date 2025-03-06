@@ -43,6 +43,7 @@ export class block extends Component {
         this.is_di = true
         this.nodeShadow.active = false
         this.element.spriteFrame = this.elements[this.elementType]
+        // this.element.spriteFrame = this.elements[this.elementType]
     }
 
     shuaXinBlockSPF(type){
